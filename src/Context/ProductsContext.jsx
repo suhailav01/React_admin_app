@@ -8,7 +8,7 @@ export default function ProductProvider({ children }) {
 
   const loadProducts = async () => {
     try {
-      const response = await fetch("https://fakestoreapi.com/products");
+      const response = await fetch("https://api.escuelajs.co/api/v1/products");
       const data = await response.json();
       setProducts(data);
       if (!response.ok) {
@@ -22,7 +22,7 @@ export default function ProductProvider({ children }) {
   const addProducts = async (newProduct) => {
     try {
       setProducts((prev) => [newProduct, ...prev]);
-      const response = await fetch("https://fakestoreapi.com/products", {
+      const response = await fetch("https://api.escuelajs.co/api/v1/products", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,7 +40,7 @@ export default function ProductProvider({ children }) {
   /////////////////////////////////////////////////////////////
   const deleteProduct = async (id) => {
     try {
-      await fetch(`https://fakestoreapi.com/products/${id}`, {
+      await fetch(`https://api.escuelajs.co/api/v1/products/${id}`, {
         method: "DELETE",
       });
       loadProducts();
@@ -54,7 +54,7 @@ export default function ProductProvider({ children }) {
       prev.map((p) => (p.id === id ? { ...p, ...updatedProduct } : p))
     );
     try {
-      const response = await fetch(`https://fakestoreapi.com/products/${id}`, {
+      const response = await fetch(`https://api.escuelajs.co/api/v1/products/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedProduct),

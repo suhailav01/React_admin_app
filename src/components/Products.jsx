@@ -149,7 +149,7 @@ function Products() {
                   <TableCell>
                     <Box
                       component="img"
-                      src={p.image}
+                      src={p.category.image}
                       sx={{
                         width: { xs: 40, sm: 50, lg: 50 },
                         height: { xs: 40, sm: 50, lg: 50 },
